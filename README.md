@@ -1,5 +1,5 @@
 # PanoramicImageView
-A simple image view to display [equirectangular](http://wiki.panotools.org/Panorama_formats) panoramic images using SceneKit.
+A simple image view to display [equirectangular](http://wiki.panotools.org/Panorama_formats) panoramic images using SceneKit. Supports pan gesture movemnet by default and can easily add core motion to allow device movement control as well. Example code included.
 
 Example equirectangular image:
 
@@ -10,6 +10,24 @@ photo credit: jamescastle <a href="http://www.flickr.com/photos/24128368@N00/346
 Rendered by `PanoramicImageView`:
 
 ![](https://github.com/keithbhunter/PanoramicImageView/blob/master/room.gif)
+
+### Usage
+
+Simply add the `PanoramicImageView` like you would any other view and set the image.
+
+```
+let imageView = PanoramicImageView()
+imageView.image = // your image
+view.addSubview(imageView)
+```
+
+To add device motion control, start a motion manager and apply the motion data.
+
+```
+motionManager.startDeviceMotionUpdates(to: .main) { deviceMotion, error in
+	imageView.deviceMotion = deviceMotion
+}
+```
 
 ### Acknowledgements
 
